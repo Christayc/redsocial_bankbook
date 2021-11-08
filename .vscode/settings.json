@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.minimumContrastRatio": 2,
+    "workbench.colorTheme": "Monokai Dimmed",
+    "workbench.preferredDarkColorTheme": "Default High Contrast",
+    "workbench.preferredHighContrastColorTheme": "Quiet Light"
+}
