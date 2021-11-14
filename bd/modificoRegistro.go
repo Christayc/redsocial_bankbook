@@ -2,7 +2,6 @@ package bd
 
 import (
 	"context"
-	"log"
 	"time"
 
 	"github.com/Christayc/redsocial_bankbook/models"
@@ -11,7 +10,7 @@ import (
 )
 
 /*ModificarRegistro modifica un usuario en bd*/
-func ModificarRegisitro(u models.Usuario, ID string) (bool, error) {
+func ModificoRegistro(u models.Usuario, ID string) (bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
@@ -43,16 +42,16 @@ func ModificarRegisitro(u models.Usuario, ID string) (bool, error) {
 		registro["sitioWeb"] = u.SitioWeb
 	}
 
-	update := bson.M{
+	updtstring := bson.M{
 		"$set": registro,
 	}
 
 	objID, _ := primitive.ObjectIDFromHex(ID)
 	filtro := bson.M{"_id": bson.M{"$eq": objID}}
 
-	_, err := col.UpdateOne(ctx, filtro, update)
+	_, err := col.UpdateOne(ctx, filtro, updtstring)
 	if err != nil {
-		log.Fatal(err.Error())
+
 		return false, err
 	}
 

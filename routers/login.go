@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/Christayc/redsocial_bankbook/bd"
-	"github.com/Christayc/redsocial_bankbook/jwt"
+
 	"github.com/Christayc/redsocial_bankbook/models"
 )
 

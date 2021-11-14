@@ -1,12 +1,9 @@
 package bd
 
-import (
-	"golang.org/x/crypto/bcrypt"
-)
+import "golang.org/x/crypto/bcrypt"
 
-/*EncriptarPassword es la rutina que permite encryptar constaseñas*/
+/*EncriptarPassword encripta una contraseña*/
 func EncriptarPassword(pass string) (string, error) {
-	costo := 10
-	bytes, err := bcrypt.GenerateFromPassword([]byte(pass), costo)
+	bytes, err := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
 	return string(bytes), err
 }

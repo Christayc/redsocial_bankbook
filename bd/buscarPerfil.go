@@ -14,7 +14,7 @@ func BuscarPerfil(ID string) (models.Usuario, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
-	db := MongoCN.Database("red-social")
+	db := MongoCN.Database("redsocial_bankbook")
 	col := db.Collection("usuarios")
 
 	var perfil models.Usuario

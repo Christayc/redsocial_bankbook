@@ -20,11 +20,13 @@ func ProcesarToken(tk string) (*models.Claim, bool, string, error) {
 	miclave := []byte("GoProgra4")
 	claims := &models.Claim{}
 
-	splitToken := strings.Split(tk, "Bearer ")
+	splitToken := strings.Split(tk, "Bearer")
 	if len(splitToken) != 2 {
-		return claims, false, string(""), errors.New("token invalido")
+		return claims, false, string(""), errors.New("token invalido1")
 	}
+
 	tk = strings.TrimSpace(splitToken[1])
+
 	tkn, err := jwt.ParseWithClaims(tk, claims, func(toke *jwt.Token) (interface{}, error) {
 		return miclave, nil
 	})
@@ -37,7 +39,7 @@ func ProcesarToken(tk string) (*models.Claim, bool, string, error) {
 		return claims, encontrado, IDUsuario, nil
 	}
 	if !tkn.Valid {
-		return claims, false, string(""), errors.New("token invalido")
+		return claims, false, string(""), errors.New("token invalido2")
 	}
 	return claims, false, string(""), err
 }

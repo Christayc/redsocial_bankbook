@@ -8,14 +8,13 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-/*InsertoRegistro es el paso final que se tiene para ingresar los datos al usuario en la bd*/
+/*InsertoRegistro persiste en bd el registro de usuario*/
 func InsertoRegistro(u models.Usuario) (string, bool, error) {
-
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	db := MongoCN.Database("redsocial_bankbook")
-	col := db.Collection("usuario")
+	db := MongoCN.Database("red-social")
+	col := db.Collection("usuarios")
 
 	u.Password, _ = EncriptarPassword(u.Password)
 
@@ -26,5 +25,4 @@ func InsertoRegistro(u models.Usuario) (string, bool, error) {
 
 	ObjID, _ := result.InsertedID.(primitive.ObjectID)
 	return ObjID.String(), true, nil
-
 }
